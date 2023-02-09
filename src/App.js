@@ -1485,10 +1485,13 @@ class App extends React.Component {
     }   
     btnExportClick() {
         var diagram = this.selectedItem.selectedDiagram;
+        var region= document.getElementById("exportRegion").ej2_instances[0];
+        var format= document.getElementById("exportFormat").ej2_instances[0];
+        // var fileName = document.getElementById("exportfileName").ej2_instances[0];
         diagram.exportDiagram({
             fileName: this.selectedItem.exportSettings.fileName,
-            format: this.selectedItem.exportSettings.format,
-            region: this.selectedItem.exportSettings.region,
+            format: format.value,
+            region: region.value,
            multiplePage:diagram.pageSettings.multiplePage
         });
         this.exportDialog.hide();
