@@ -157,7 +157,7 @@ export class DropDownDataSources {
     }
     paperList(){
         var items =[
-            { text: 'Letter (8.5 in x 11 in)', value: 'Letter' }, { text: 'Legal (8.5 in x 14 in)', value: 'Legal' },
+            { text: 'Letter (8.5 in x 11 in)', value: 'Letter',iconCss:'sf-icon-check-tick'  }, { text: 'Legal (8.5 in x 14 in)', value: 'Legal' },
             { text: 'Tabloid (279 mm x 432 mm)', value: 'Tabloid' }, { text: 'A3 (297 mm x 420 mm)', value: 'A3' },
             { text: 'A4 (210 mm x 297 mm)', value: 'A4' }, { text: 'A5 (148 mm x 210 mm)', value: 'A5' },
             { text: 'A6 (105 mm x 148 mm)', value: 'A6' }

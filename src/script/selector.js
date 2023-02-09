@@ -418,7 +418,7 @@ export class PrintSettings {
         this.mPageHeight = 0;
         this.mIsPortrait = true;
         this.mIsLandscape = false;
-        this.mMultiplePage = false;
+        this.mMultiplePage = true;
         this.mPaperSize = 'Letter';
     }
     get region() {
