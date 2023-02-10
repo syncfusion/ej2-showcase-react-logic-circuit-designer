@@ -702,7 +702,7 @@ input, button, select, textarea {
 
 .e-toolbar .e-toolbar-items .e-toolbar-item .e-tbar-btn.e-btn,
 .e-toolbar .e-toolbar-items .e-toolbar-item .e-dropdown-btn.e-btn {
-    height: 30px;
+    height: 33px;
     margin: 0px 0px 6px;
     /* background: #ffffff;*/
     background: transparent;
