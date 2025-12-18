@@ -485,7 +485,7 @@ export class PageSettings {
 }
 export class ScrollSettings {
     constructor() {
-        this.currentZoom = '100%';
+        this.currentZoom = '100 %';
     }
 }
 

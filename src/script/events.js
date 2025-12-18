@@ -34,20 +34,17 @@ export class DiagramClientSideEvents {
                 if(args.newValue.length>0 && args.newValue[0] instanceof Connector){
                     diagram.selectedItems = { constraints: SelectorConstraints.All };
                     
-                    toolbarEditor.hideItem(6,true);
-                    // toolbarObj.items[7].template = '<div style="margin-left:1000px;"></div>';
+                    toolbarEditor.hideItem(3,true);
                 }
                 else{
                     if(diagram.selectedItems.nodes.length > 0 &&
                          diagram.selectedItems.nodes[0].id.indexOf('Clock') != -1)
                     {
-                        toolbarEditor.hideItem(6,false);
-                        // toolbarObj.items[7].template = '<div style="margin-left:900px;"></div>';
+                        toolbarEditor.hideItem(3,false);
                     }
                     else
                     {
-                        toolbarEditor.hideItem(6,true);
-                        // toolbarObj.items[7].template = '<div style="margin-left:1000px;"></div>';
+                        toolbarEditor.hideItem(3,true);
                     }
                 diagram.selectedItems = { constraints: SelectorConstraints.All & ~SelectorConstraints.Rotate & ~SelectorConstraints.ResizeAll };
                 }
@@ -56,12 +53,6 @@ export class DiagramClientSideEvents {
     enableToolbarItems(selectedItems) {
         const toolbarContainer = document.getElementsByClassName('db-toolbar-container')[0];
         let toolbarClassName = 'db-toolbar-container';
-        if (toolbarContainer.classList.contains('db-undo')) {
-            toolbarClassName += ' db-undo';
-        }
-        if (toolbarContainer.classList.contains('db-redo')) {
-            toolbarClassName += ' db-redo';
-        }
         toolbarContainer.className = toolbarClassName;
         if (selectedItems.length === 1) {
             toolbarContainer.className = toolbarContainer.className + ' db-select';
@@ -86,7 +77,6 @@ export class DiagramClientSideEvents {
             toolbarContainer.className = toolbarContainer.className + ' db-select db-double db-multiple';
         }
         if (selectedItems.length > 1) {
-            // let isNodeExist: boolean = false;
             for (const item of selectedItems) {
                 if (item instanceof Node) {
                     toolbarContainer.className = toolbarContainer.className + ' db-select db-node';
@@ -135,14 +125,6 @@ export class DiagramClientSideEvents {
     historyChange(args) {
         var diagram = document.getElementById("diagram").ej2_instances[0];
         var toolbarContainer = document.getElementsByClassName('db-toolbar-container')[0];
-        toolbarContainer.classList.remove('db-undo');
-        toolbarContainer.classList.remove('db-redo');
-        if (diagram.historyManager.undoStack.length > 0) {
-            toolbarContainer.classList.add('db-undo');
-        }
-        if (diagram.historyManager.redoStack.length > 0) {
-            toolbarContainer.classList.add('db-redo');
-        }
     }
     multipleSelectionSettings(selectedItems) {
         this.selectedItem.utilityMethods.objectTypeChange('None');
@@ -186,11 +168,9 @@ export class DiagramClientSideEvents {
                 document.getElementById('textColorDiv').className = 'col-xs-6 db-col-right';
                 if (showConTextPanel) {
                     this.ddlTextPosition.dataSource = this.selectedItem.textProperties.getConnectorTextPositions();
-                    // this.selectedItem.utilityMethods.bindTextProperties(selectItem1.connectors[0].annotations[0].style, this.selectedItem);
                 }
                 else {
                     this.ddlTextPosition.dataSource = this.selectedItem.textProperties.getNodeTextPositions();
-                    // this.selectedItem.utilityMethods.bindTextProperties(selectItem1.connectors[0].annotations[0].style, this.selectedItem);
                 }
                 this.ddlTextPosition.dataBind();
             }
@@ -323,8 +303,6 @@ export class DiagramPropertyBinding {
     }
     pageOrientationChange(args) {
         if (args.event) {
-            // const pageWidth: number = Number(this.selectedItem.pageSettings.pageWidth);
-            //  const pageHeight: number = Number(this.selectedItem.pageSettings.pageHeight);
             const target = args.event.target;
             const diagram = this.selectedItem.selectedDiagram;
             // eslint-disable-next-line
@@ -347,7 +325,6 @@ export class DiagramPropertyBinding {
     }
     pageBackgroundChange1(args) {
         if (args.currentValue) {
-            // const target: HTMLInputElement = args.target as HTMLInputElement; 
             const diagram = this.selectedItem.selectedDiagram;
             diagram.pageSettings.background = {
                 color: args.currentValue.rgba

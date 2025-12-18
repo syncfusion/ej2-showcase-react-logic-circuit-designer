@@ -50,12 +50,11 @@ input, button, select, textarea {
 }
 
 .db-diagram-name-container {
-    padding: 6px 20px;
+    padding: 4px 18px;
 }
 
 .db-diagram-name-container #diagramName {
     display: block;
-    margin-top: 2px;
 }
 
 .db-diagram-name-container #diagramEditable {
@@ -77,7 +76,8 @@ input, button, select, textarea {
 
 .db-diagram-name {
     color: #ffffff;
-    font-size: 12px;
+    font-size: 14px;
+    margin-top: 2px;
     height: 19px;
     float: left;
 }
@@ -137,16 +137,18 @@ input, button, select, textarea {
 
 .sidebar {
     position: absolute;
-    bottom: 0;
+    top: 112px; /* header + menu area */
+    bottom: 72px; /* leave space for fixed footer */
     width: 260px;
     left: 0px;
-    height: calc(100% - 112px);
+    height: auto;
 }
 
 .main-content {
     margin: 0;
     left:260px;
-    height: calc(100% - 112px);
+    top: 112px; /* header + menu area */
+    bottom: 72px; /* footer height */
     position:absolute;
     width:calc(100% );
 }
@@ -639,9 +641,14 @@ input, button, select, textarea {
 }
 
 .db-shortcut {
-    float: right;
     color: #999999;
     font-size: 12px;
+    margin-left: 30px;
+}
+.db-shortcut-cut {
+    color: #999999;
+    font-size: 12px;
+    margin-left: 42px;
 }
 
 /* Menu Bar Customization - End */
@@ -1075,7 +1082,7 @@ input[type="color"]::-moz-color-swatch {
     background: #ffffff;
     /* border: 1px solid #E0E0E0; */
     height: 26px;
-    /* border-radius: 3px; */
+    border-radius: 3px;
 }
 
 .db-text-container:hover,
@@ -2356,7 +2363,7 @@ input.e-input::selection,
 
 .db-text-input .e-numeric.e-input-group {
     padding: 1px 0px;
-    height: 22px;
+    height: 25px;
     width: 80px;
     /* margin: 0px 2px 0px 0px; */
 }
@@ -2378,6 +2385,9 @@ input.e-input::selection,
 
 .e-tooltip-wrap.e-popup.e-control.e-popup-open {
     pointer-events: none !important;
+}
+.e-arrow-tip-inner,.e-tip-bottom::before {
+  display: none !important;
 }
 
 .e-control:focus, .e-control *:focus {

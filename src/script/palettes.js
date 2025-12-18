@@ -71,8 +71,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
  export class Palettes {
      constructor() {
          this.expandMode = 'Multiple';
-         this.symbolPreview = { height: 50, width: 50 };
-         this.symbolMargin = { left: 5, right: 5, top: 10, bottom: 10 };
+         this.symbolMargin = { left: 12, right: 12, top: 12, bottom: 12 };
          this.palettes = [
              { id: 'input', expanded: true, symbols: this.input(), title: 'Input Controls'},
              { id: 'output', expanded: true, symbols: this.output(), title: 'Output Controls' },
@@ -80,9 +79,11 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
              { id: 'flipflop', expanded: true, symbols: this.flipflops(), title: 'Flip flops' },
              { id: 'other', expanded: true, symbols: this.other(), title: 'Other' },
          ];
+          this.symbolWidth = 96;
+          this.symbolHeight = 96;
      }
      getSymbolInfo(symbol) {
-        return {description: { text: symbol.shape['shape'], overflow: 'Wrap', fontSize: 12, margin: { top: 10, left: 0, right: 0, bottom: 0 } } };
+        return {description: { text: symbol.shape['shape'], wrap: 'NoWrap', overflow: 'Ellipsis', fontSize: 12, margin: { top: 10, left: 0, right: 0, bottom: 0 } } };
      }
      setPaletteNodeDefaults(node) {
          if (!(node.addInfo && node.addInfo.type === 'CustomShapes') && (!node.children)) {
@@ -131,6 +132,13 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
      output() {
          const output = [
             {
+                id: '4-BitDigit',
+                shape: { type: 'Path', data: digitdata, shape: '4-Bit Digit' },
+                style: { fill: '#000000', strokeWidth: 0 }, height: 55, width: 70,
+                 tooltip: { content: '4 Bit Digit' },
+                 constraints: NodeConstraints.Default | NodeConstraints.Tooltip & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
+            },
+            {
                 id: 'FullPath',
                 height: 40,
                 width: 30,
@@ -138,7 +146,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: BulbCompletePath },
                 style: { strokeColor: 'black', fill: 'black' },
-                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~NodeConstraints.InConnect,
+                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
@@ -149,7 +157,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 108,
                 shape: { type: 'Path', data: BulbBlackPart },
                 style: { strokeColor: 'black', fill: 'black' },
-                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~NodeConstraints.InConnect,
+                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
@@ -160,7 +168,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 97,
                 shape: { type: 'Path', data: BulbInnerBluePart },
                 style: { strokeColor: 'black', fill: 'white' },
-                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~NodeConstraints.InConnect,
+                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
                 visible: false,
             },
     
@@ -172,24 +180,30 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 90,
                 shape: { type: 'Path', data: BulbOuterBluePart },
                 style: { strokeColor: 'black', fill: 'white' },
-                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~NodeConstraints.InConnect,
+                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
+                visible: false,
+            },
+            {
+                id: 'OuterBluePartRect',
+                height: 40,
+                width: 60,
+                offsetX: 140,
+                offsetY: 100,
+                style: { strokeColor: 'transparent', fill: 'transparent' },
+                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
                 visible: false,
             },
     
             {
                 id: 'Bulb',
-                children: ['FullPath', 'BlackPart', 'InnerBluePart', 'OuterBluePart'],
+                children: ['FullPath', 'BlackPart', 'InnerBluePart', 'OuterBluePart', "OuterBluePartRect"],
                 shape: { shape: 'Light Bulb' },
                 style: { fill: 'none', padding: '2' },
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
+                tooltip: { content: 'Bulb' },
+                constraints: NodeConstraints.Default | NodeConstraints.Tooltip & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
-            {
-                id: '4-Bit Digit',
-                shape: { type: 'Path', data: digitdata, shape: '4-Bit Digit' },
-                style: { fill: '#000000', strokeWidth: 0 }, height: 55, width: 70,
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
-            },
+            
          ];
          return output;
      }
@@ -203,7 +217,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: SwitchOffOuterRect },
                 style: { strokeColor: 'black', strokeWidth: 2 },
-                constraints: NodeConstraints.Default & ~ NodeConstraints.Select & ~NodeConstraints.InConnect,
+                constraints: NodeConstraints.Default & ~ NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
             {
                 id: 'SwOffInner',
@@ -213,7 +227,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: SwitchOffInnerRect },
                 style: { strokeColor: 'black', strokeWidth: 2 },
-                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~NodeConstraints.InConnect,
+                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
@@ -224,7 +238,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: SwitchoffButton },
                 style: { strokeColor: 'black', strokeWidth: 2 },
-                constraints:NodeConstraints.Default & ~NodeConstraints.Select & ~ NodeConstraints.InConnect,
+                constraints:NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
@@ -235,17 +249,18 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: SWitchOnButton },
                 style: { strokeColor: 'transparent', strokeWidth: 2, fill: 'transparent' },
-                constraints:NodeConstraints.Default & ~NodeConstraints.Select & ~NodeConstraints.InConnect,
+                constraints:NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
                 visible: false,
             },
     
     
             {
-                id: 'Toggle Switch',
+                id: 'ToggleSwitch',
                 children: ['SwOffOuter', 'SwOffInner', 'SwOff', 'SwOn'],
                 shape: { shape: 'Toggle Switch' },
                 style: { fill: 'none' },
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
+                tooltip: { content: 'Toggle Switch' },
+                constraints: NodeConstraints.Default | NodeConstraints.Tooltip & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
@@ -256,7 +271,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: PushButtonOuterRect },
                 style: { strokeColor: 'black', strokeWidth: 0, fill: 'black' },
-                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~NodeConstraints.InConnect,
+                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
@@ -267,7 +282,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: PushButtonOuterCircle },
                 style: { strokeColor: 'black', strokeWidth: 2, fill: 'white' },
-                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~NodeConstraints.InConnect,
+                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
@@ -278,15 +293,16 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: PushButtonInnerCircle },
                 style: { strokeColor: 'black', strokeWidth: 2, fill: 'white' },
-                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~NodeConstraints.InConnect,
+                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
                 id: 'PushButton',
                 children: ['PBOuterRect', 'PBOuterCircle', 'PBInnerCircle'],
                 shape: { shape: 'Push Button' },
-                style: { fill: 'white' },
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
+                style: { fill: 'transparent' },
+                tooltip: { content: 'Push Button' },
+                constraints: NodeConstraints.Default | NodeConstraints.Tooltip & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
@@ -297,7 +313,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: ClockOuterRectangle },
                 style: { strokeColor: 'black', strokeWidth: 2 },
-                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~NodeConstraints.InConnect,
+                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
@@ -308,7 +324,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: ClockInnerPart },
                 style: { strokeColor: 'black', strokeWidth: 2, fill: 'white' },
-                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~NodeConstraints.InConnect,
+                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
@@ -316,21 +332,24 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 children: ['CLKOuterRect', 'CLKInnerPart'],
                 shape: { shape: 'Clock' },
                 style: { fill: 'none' },
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
+                tooltip: { content: 'Clock' },
+                constraints: NodeConstraints.Default | NodeConstraints.Tooltip & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
-                id: 'High Constant',
+                id: 'HighConstant',
                 shape: { shape: 'High Constant', type: 'Path', data: highconstantdata },
                 style: { fill: '#000000', strokeWidth: 0 }, height: 55, width: 70,
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
+                tooltip: { content: 'High Constant' },
+                constraints: NodeConstraints.Default & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect)| NodeConstraints.Tooltip ,
             },
     
             {
-                id: 'Low Constant',
+                id: 'LowConstant',
                 shape: { shape: 'Low Constant', type: 'Path', data: lowconstantdata },
                 style: { fill: '#000000', strokeWidth: 0 }, height: 55, width: 70,
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
+                tooltip: { content: 'Low Constant' },
+                constraints: NodeConstraints.Default & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect)| NodeConstraints.Tooltip ,
             },
          ];
          return input;
@@ -338,42 +357,50 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
      gates() {
          const gates = [
             {
-                id: 'OR Gate', shape: { type: 'Path', data: orData, shape: 'OR Gate' }, style: { fill: '#000000', strokeWidth: 0 }, height: 45, width: 79,
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
+                id: 'ORGate', shape: { type: 'Path', data: orData, shape: 'OR Gate' }, style: { fill: '#000000', strokeWidth: 0 }, height: 45, width: 79,
+                 tooltip: { content: 'OR Gate' },
+                 constraints: NodeConstraints.Default & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect)| NodeConstraints.Tooltip ,
             },
             {
-                id: 'NOR Gate', shape: { type: 'Path', data: nordata, shape: 'NOR Gate' }, style: { fill: '#000000', strokeWidth: 0 }, height: 45, width: 79,
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
-            },
-    
-            {
-                id: 'AND Gate', shape: { type: 'Path', data: andData, shape: 'AND Gate' }, style: { fill: '#000000', strokeWidth: 0 }, height: 45, width: 79,
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
+                id: 'NORGate', shape: { type: 'Path', data: nordata, shape: 'NOR Gate' }, style: { fill: '#000000', strokeWidth: 0 }, height: 45, width: 79,
+                 tooltip: { content: 'NOR Gate' },
+                 constraints: NodeConstraints.Default & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) | NodeConstraints.Tooltip ,
             },
     
             {
-                id: 'NAND Gate', shape: { type: 'Path', data: nanddata, shape: 'NAND Gate' }, style: { fill: '#000000', strokeWidth: 0 }, height: 45, width: 79,
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
+                id: 'ANDGate', shape: { type: 'Path', data: andData, shape: 'AND Gate' }, style: { fill: '#000000', strokeWidth: 0 }, height: 45, width: 79,
+                 tooltip: { content: 'AND Gate' },
+                 constraints: NodeConstraints.Default & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect)| NodeConstraints.Tooltip ,
             },
     
             {
-                id: 'Buffer Gate', shape: { type: 'Path', data: buffer, shape: 'Buffer' }, style: { fill: '#000000', strokeWidth: 0 },  height: 45, width: 79,
-                constraints:NodeConstraints.Default & ~NodeConstraints.InConnect,
+                id: 'NANDGate', shape: { type: 'Path', data: nanddata, shape: 'NAND Gate' }, style: { fill: '#000000', strokeWidth: 0 }, height: 45, width: 79,
+                 tooltip: { content: 'NAND Gate' },
+                 constraints: NodeConstraints.Default  & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) | NodeConstraints.Tooltip ,
             },
     
             {
-                id: 'Not Gate', shape: { type: 'Path', data: notData, shape: 'NOT Gate' }, style: { fill: '#000000', strokeWidth: 0 }, height: 45, width: 79,
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
+                id: 'BufferGate', shape: { type: 'Path', data: buffer, shape: 'Buffer' }, style: { fill: '#000000', strokeWidth: 0 },  height: 45, width: 79,
+                tooltip: { content: 'Buffer Gate' },
+                 constraints: NodeConstraints.Default  & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) | NodeConstraints.Tooltip ,
             },
     
             {
-                id: 'XOR Gate', shape: { type: 'Path', data: xorData, shape: 'XOR Gate' }, style: { fill: '#000000', strokeWidth: 0 }, height: 45, width: 79,
-                constraints:NodeConstraints.Default & ~NodeConstraints.InConnect,
+                id: 'NotGate', shape: { type: 'Path', data: notData, shape: 'NOT Gate' }, style: { fill: '#000000', strokeWidth: 0 }, height: 45, width: 79,
+                tooltip: { content: 'NOT Gate' },
+                 constraints: NodeConstraints.Default & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) | NodeConstraints.Tooltip ,
             },
     
             {
-                id: 'XNOR Gate', shape: { type: 'Path', data: xnorData, shape: 'XNOR Gate' }, style: { fill: '#000000', strokeWidth: 0 }, height: 45, width: 79,
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
+                id: 'XORGate', shape: { type: 'Path', data: xorData, shape: 'XOR Gate' }, style: { fill: '#000000', strokeWidth: 0 }, height: 45, width: 79,
+                 tooltip: { content: 'XOR Gate' },
+                 constraints: NodeConstraints.Default & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) | NodeConstraints.Tooltip ,
+            },
+    
+            {
+                id: 'XNORGate', shape: { type: 'Path', data: xnorData, shape: 'XNOR Gate' }, style: { fill: '#000000', strokeWidth: 0 }, height: 45, width: 79,
+                tooltip: { content: 'XNOR Gate' },
+                 constraints: NodeConstraints.Default & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) | NodeConstraints.Tooltip ,
             },
          ];
          return gates;
@@ -381,31 +408,35 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
      flipflops() {
          const flipflops = [
             {
-                id: 'JK Flip-Flop',
+                id: 'JKFlip-Flop',
                 shape: { shape: 'JK Flip-Flop', type: 'Path', data: jkflipflopdata },
                 style: { fill: '#000000', strokeWidth: 0 }, height: 90, width: 70,
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
+                 tooltip: { content: 'JK Flip Flop' },
+                 constraints: NodeConstraints.Default & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) | NodeConstraints.Tooltip ,
             },
     
             {
-                id: 'D Flip-Flop',
+                id: 'DFlip-Flop',
                 shape: { shape: 'D Flip-Flop', type: 'Path', data: dflipflop },
                 style: { fill: '#000000', strokeWidth: 0 }, height: 90, width: 65,
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
+                tooltip: { content: 'D Flip Flop' },
+                 constraints: NodeConstraints.Default & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) | NodeConstraints.Tooltip ,
             },
     
             {
-                id: 'T Flip-Flop',
+                id: 'TFlip-Flop',
                 shape: { shape: 'T Flip-Flop', type: 'Path', data: tflipflopdata },
                 style: { fill: '#000000', strokeWidth: 0 }, height: 90, width: 65,
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
+                tooltip: { content: 'T Flip Flop' },
+                 constraints: NodeConstraints.Default  & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) | NodeConstraints.Tooltip ,
             },
     
             {
-                id: 'SR Flip-Flop',
+                id: 'SRFlip-Flop',
                 shape: { shape: 'SR Flip-Flop', type: 'Path', data: srflipflopdata },
                 style: { fill: '#000000', strokeWidth: 0 }, height: 78, width: 73,
-                constraints: NodeConstraints.Default & ~ NodeConstraints.InConnect,
+                tooltip: { content: 'SR Flip Flop' },
+                 constraints: NodeConstraints.Default & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) | NodeConstraints.Tooltip ,
             },
          ];
          return flipflops;
@@ -419,7 +450,8 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 style: { strokeColor: 'black', strokeWidth: 2, fill: 'black', color: 'white' },
                 height: 50,
                 width: 60,
-                constraints: NodeConstraints.Default & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
+                tooltip: { content: 'Label' },
+                constraints: NodeConstraints.Default & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) | NodeConstraints.Tooltip ,
             },
     
             {
@@ -428,25 +460,28 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 style: { fill: '#000000', strokeWidth: 0 },
                 height: 45,
                 width: 80,
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
+                tooltip: { content: 'Bus' },
+                constraints: NodeConstraints.Default & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) | NodeConstraints.Tooltip ,
             },
     
             {
-                id: 'Pull Up',
+                id: 'PullUp',
                 shape: { type: 'Path', data: pullupdata, shape: 'Pull Up' },
                 style: { fill: '#000000', strokeWidth: 0 },
                 height: 45,
                 width: 73,
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
+                tooltip: { content: 'Pull Up' },
+                 constraints: NodeConstraints.Default & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) | NodeConstraints.Tooltip ,
             },
     
             {
-                id: 'Pull Down',
+                id: 'PullDown',
                 shape: { type: 'Path', data: pulldowndata, shape: 'Pull Down' },
                 style: { fill: '#000000', strokeWidth: 0 },
                 height: 45,
                 width: 73,
-                constraints: NodeConstraints.Default & ~NodeConstraints.InConnect,
+                tooltip: { content: 'Pull Down' },
+                constraints: NodeConstraints.Default  & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) | NodeConstraints.Tooltip ,
             },
         ];
         return other;

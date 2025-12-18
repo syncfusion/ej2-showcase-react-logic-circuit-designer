@@ -124,14 +124,6 @@
      }
      getHexColor(colorStr) {
          const colors = [];
-         // let a: HTMLDivElement = document.createElement('div');
-         // a.style.color = colorStr;
-         // let colors: number[] = window.getComputedStyle(document.body.appendChild(a)).color.match(/\d+/g).map(
-         //     (a: string): number => {
-         //         return parseInt(a, 10);
-         //     }
-         // );
-         // document.body.removeChild(a);
          return (colors.length >= 3) ? '#' + (((1 << 24) + (colors[0] << 16) + (colors[1] << 8) + colors[2]).toString(16).substr(1)) : '';
      }
      getOffset(position) {
@@ -223,8 +215,6 @@
          document.getElementsByClassName('sb-content-overlay')[0].style.display = '';
          const ajax = new Ajax(file, 'GET', true);
          ajax.send().then();
-         // let value = '../assets/dbstyle/flowchart_Images/CreditCardFlow.json'
-         // let context: any = this;
          ajax.onSuccess = (data) => {
              selectedItem.preventSelectionChange = true;
              selectedItem.isTemplateLoad = true;
@@ -248,12 +238,6 @@
      enableToolbarItems(selectedItems) {
          const toolbarContainer = document.getElementsByClassName('db-toolbar-container')[0];
          let toolbarClassName = 'db-toolbar-container';
-         if (toolbarContainer.classList.contains('db-undo')) {
-             toolbarClassName += ' db-undo';
-         }
-         if (toolbarContainer.classList.contains('db-redo')) {
-             toolbarClassName += ' db-redo';
-         }
          toolbarContainer.className = toolbarClassName;
          if (selectedItems.length === 1) {
              toolbarContainer.className = toolbarContainer.className + ' db-select';
@@ -278,7 +262,6 @@
              toolbarContainer.className = toolbarContainer.className + ' db-select db-double db-multiple';
          }
          if (selectedItems.length > 1) {
-             // let isNodeExist: boolean = false;
              for (const item of selectedItems) {
                  if (item instanceof Node) {
                      toolbarContainer.className = toolbarContainer.className + ' db-select db-node';
@@ -322,12 +305,6 @@
                  if (selectedItem.pasteData.length === 0 && itemText === 'Paste') {
                      return true;
                  }
-                 if (itemText === 'Undo' && selectedItem.selectedDiagram.historyManager.undoStack.length === 0) {
-                     return true;
-                 }
-                 if (itemText === 'Redo' && selectedItem.selectedDiagram.historyManager.redoStack.length === 0) {
-                     return true;
-                 }
                  if (itemText === 'Select All') {
                      if (selectedItem.diagramType !== 'GeneralDiagram' || (selectedItem.selectedDiagram.nodes.length === 0 && selectedItem.selectedDiagram.connectors.length === 0)) {
                          return true;
@@ -344,8 +321,6 @@
          return false;
      }
      enableArrangeMenuItems(selectedItem) {
-         // const contextInstance: any = document.getElementById('arrangeContextMenu');
-         // const contextMenu: ContextMenu = contextInstance.ej2_instances[0] as ContextMenu;
          const contextMenu = this.arrangeContextMenu;
          let selectedItems = selectedItem.selectedDiagram.selectedItems.nodes;
          selectedItems = selectedItems.concat(selectedItem.selectedDiagram.selectedItems.connectors);
@@ -426,6 +401,6 @@
          btnWindow.ej2_instances[0].items[1].iconCss = '';
          const btnView = document.getElementById('btnViewMenu');
          btnView.ej2_instances[0].items[7].iconCss = '';
-     }
+     }     
      
  }
