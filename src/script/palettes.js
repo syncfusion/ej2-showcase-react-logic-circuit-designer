@@ -2,7 +2,7 @@
  *  Palette handler
  */
  import { PortVisibility, PortConstraints } from '@syncfusion/ej2-diagrams';
- import { NodeConstraints } from '@syncfusion/ej2-diagrams';
+ import { NodeConstraints,AnnotationConstraints } from '@syncfusion/ej2-diagrams';
  var orData = 'M70.9412 20L69.9412 20.0012L70.9412 20ZM33.5076 11L34.4744 10.7444L33.5076 11ZM33.7565 29L34.7303 29.2276L33.7565 29ZM29 1L29.0345 0.000594001C28.6575 -0.0124037 28.3053 0.187777 28.1237 0.518291C27.942 0.848804 27.9617 1.25342 28.1747 1.56469L29 1ZM29 40L28.1747 39.4353C27.9617 39.7466 27.942 40.1512 28.1237 40.4817C28.3053 40.8122 28.6575 41.0124 29.0345 40.9994L29 40ZM66.5674 29.1936L67.3548 29.8101L67.3548 29.8101L66.5674 29.1936ZM45.21 39.441L45.2445 40.4404L45.2445 40.4404L45.21 39.441ZM45.6846 1.57533L45.719 0.575923L45.6846 1.57533ZM66.5 11L67.2718 10.3641L66.5 11ZM10 11C10 13.2091 8.20914 15 6 15V17C9.31371 17 12 14.3137 12 11H10ZM6 15C3.79086 15 2 13.2091 2 11H0C0 14.3137 2.68629 17 6 17V15ZM2 11C2 8.79086 3.79086 7 6 7V5C2.68629 5 0 7.68629 0 11H2ZM6 7C8.20914 7 10 8.79086 10 11H12C12 7.68629 9.31371 5 6 5V7ZM10 29C10 31.2091 8.20914 33 6 33V35C9.31371 35 12 32.3137 12 29H10ZM6 33C3.79086 33 2 31.2091 2 29H0C0 32.3137 2.68629 35 6 35V33ZM2 29C2 26.7909 3.79086 25 6 25V23C2.68629 23 0 25.6863 0 29H2ZM6 25C8.20914 25 10 26.7909 10 29H12C12 25.6863 9.31371 23 6 23V25ZM98 20C98 22.2091 96.2091 24 94 24V26C97.3137 26 100 23.3137 100 20H98ZM94 24C91.7909 24 90 22.2091 90 20H88C88 23.3137 90.6863 26 94 26V24ZM90 20C90 17.7909 91.7909 16 94 16V14C90.6863 14 88 16.6863 88 20H90ZM94 16C96.2091 16 98 17.7909 98 20H100C100 16.6863 97.3137 14 94 14V16ZM70.9412 21H89V19H70.9412V21ZM11 12H33.5076V10H11V12ZM11 30H33.7565V28H11V30ZM28.9655 1.99941L45.6501 2.57474L45.719 0.575923L29.0345 0.000594001L28.9655 1.99941ZM45.1755 38.4416L28.9655 39.0006L29.0345 40.9994L45.2445 40.4404L45.1755 38.4416ZM65.7801 28.5771C60.9514 34.7438 53.1021 38.1683 45.1755 38.4416L45.2445 40.4404C53.6589 40.1503 62.1031 36.517 67.3548 29.8101L65.7801 28.5771ZM45.6501 2.57474C53.3279 2.83949 60.9322 5.81523 65.7282 11.6359L67.2718 10.3641C62.0267 3.99837 53.8221 0.85534 45.719 0.575923L45.6501 2.57474ZM34.4744 10.7444C33.499 7.05472 31.9517 3.54311 29.8253 0.435311L28.1747 1.56469C30.1606 4.46711 31.6183 7.76579 32.5408 11.2556L34.4744 10.7444ZM29.8253 40.5647C32.1482 37.1698 33.7801 33.2928 34.7303 29.2276L32.7827 28.7724C31.8833 32.6208 30.3442 36.2645 28.1747 39.4353L29.8253 40.5647ZM34.7303 29.2276C36.1399 23.1963 36.055 16.7243 34.4744 10.7444L32.5408 11.2556C34.0374 16.9173 34.1184 23.0575 32.7827 28.7724L34.7303 29.2276ZM65.7282 11.6359C68.669 15.205 69.9383 17.651 69.9412 20.0012L71.9412 19.9988C71.9374 16.896 70.246 13.9738 67.2718 10.3641L65.7282 11.6359ZM69.9412 20.0012C69.944 22.3473 68.6863 24.8654 65.7801 28.5771L67.3548 29.8101C70.2867 26.0656 71.9449 23.0763 71.9412 19.9988L69.9412 20.0012Z';
 var andData = 'M29 1C29 0.447715 29.4477 0 30 0H52.5C63.4538 0 72.4534 8.14084 72.976 19H88.083C88.559 16.1623 91.027 14 94 14C97.3137 14 100 16.6863 100 20C100 23.3137 97.3137 26 94 26C91.027 26 88.559 23.8377 88.083 21H72.9761C72.4556 31.8562 63.5176 41 52.5 41H30C29.4477 41 29 40.5523 29 40V30H11.917C11.441 32.8377 8.973 35 6 35C2.68629 35 0 32.3137 0 29C0 25.6863 2.68629 23 6 23C8.973 23 11.441 25.1623 11.917 28H29V12H11.917C11.441 14.8377 8.973 17 6 17C2.68629 17 0 14.3137 0 11C0 7.68629 2.68629 5 6 5C8.973 5 11.441 7.16229 11.917 10H29V1ZM31 2V39H52.5C62.6847 39 71 30.2504 71 20C71 9.81642 62.7516 2 52.5 2H31ZM6 7C3.79086 7 2 8.79086 2 11C2 13.2091 3.79086 15 6 15C8.20914 15 10 13.2091 10 11C10 8.79086 8.20914 7 6 7ZM94 16C91.7909 16 90 17.7909 90 20C90 22.2091 91.7909 24 94 24C96.2091 24 98 22.2091 98 20C98 17.7909 96.2091 16 94 16ZM6 25C3.79086 25 2 26.7909 2 29C2 31.2091 3.79086 33 6 33C8.20914 33 10 31.2091 10 29C10 26.7909 8.20914 25 6 25Z';
 var notData = 'M27 1L27.4122 0.0888921C27.1027 -0.0511131 26.7433 -0.0244422 26.4579 0.159712C26.1724 0.343866 26 0.66032 26 1H27ZM27 40H26C26 40.3432 26.176 40.6623 26.4661 40.8456C26.7563 41.0288 27.1201 41.0504 27.4299 40.9029L27 40ZM10 20C10 22.2091 8.20914 24 6 24V26C9.31371 26 12 23.3137 12 20H10ZM6 24C3.79086 24 2 22.2091 2 20H0C0 23.3137 2.68629 26 6 26V24ZM2 20C2 17.7909 3.79086 16 6 16V14C2.68629 14 0 16.6863 0 20H2ZM6 16C8.20914 16 10 17.7909 10 20H12C12 16.6863 9.31371 14 6 14V16ZM98 20C98 22.2091 96.2091 24 94 24V26C97.3137 26 100 23.3137 100 20H98ZM94 24C91.7909 24 90 22.2091 90 20H88C88 23.3137 90.6863 26 94 26V24ZM90 20C90 17.7909 91.7909 16 94 16V14C90.6863 14 88 16.6863 88 20H90ZM94 16C96.2091 16 98 17.7909 98 20H100C100 16.6863 97.3137 14 94 14V16ZM74 20C74 21.1046 73.1046 22 72 22V24C74.2091 24 76 22.2091 76 20H74ZM72 22C70.8954 22 70 21.1046 70 20H68C68 22.2091 69.7909 24 72 24V22ZM70 20C70 18.8954 70.8954 18 72 18V16C69.7909 16 68 17.7909 68 20H70ZM72 18C73.1046 18 74 18.8954 74 20H76C76 17.7909 74.2091 16 72 16V18ZM75.5 21H89V19H75.5V21ZM26 1V40H28V1H26ZM27.4299 40.9029L69.4299 20.9029L68.5701 19.0971L26.5701 39.0971L27.4299 40.9029ZM69.4122 19.0889L27.4122 0.0888921L26.5878 1.91111L68.5878 20.9111L69.4122 19.0889ZM11.5 21H26V19H11.5V21Z';
@@ -146,7 +146,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: BulbCompletePath },
                 style: { strokeColor: 'black', fill: 'black' },
-                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
+                constraints: NodeConstraints.Default  & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
@@ -157,7 +157,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 108,
                 shape: { type: 'Path', data: BulbBlackPart },
                 style: { strokeColor: 'black', fill: 'black' },
-                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
+                constraints: NodeConstraints.Default | NodeConstraints.ReadOnly & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
@@ -180,7 +180,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 90,
                 shape: { type: 'Path', data: BulbOuterBluePart },
                 style: { strokeColor: 'black', fill: 'white' },
-                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
+                constraints: NodeConstraints.Default  & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
                 visible: false,
             },
             {
@@ -199,8 +199,8 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 children: ['FullPath', 'BlackPart', 'InnerBluePart', 'OuterBluePart', "OuterBluePartRect"],
                 shape: { shape: 'Light Bulb' },
                 style: { fill: 'none', padding: '2' },
-                tooltip: { content: 'Bulb' },
-                constraints: NodeConstraints.Default | NodeConstraints.Tooltip & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
+                tooltip: { content: 'Light Bulb' },
+                constraints: NodeConstraints.Default | NodeConstraints.ReadOnly | NodeConstraints.Tooltip & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             
@@ -217,7 +217,8 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: SwitchOffOuterRect },
                 style: { strokeColor: 'black', strokeWidth: 2 },
-                constraints: NodeConstraints.Default & ~ NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
+                constraints: NodeConstraints.Default | NodeConstraints.ReadOnly & ~ NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
             {
                 id: 'SwOffInner',
@@ -227,7 +228,8 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: SwitchOffInnerRect },
                 style: { strokeColor: 'black', strokeWidth: 2 },
-                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
+                constraints: NodeConstraints.Default | NodeConstraints.ReadOnly & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
@@ -238,6 +240,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: SwitchoffButton },
                 style: { strokeColor: 'black', strokeWidth: 2 },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints:NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
@@ -249,6 +252,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: SWitchOnButton },
                 style: { strokeColor: 'transparent', strokeWidth: 2, fill: 'transparent' },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints:NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
                 visible: false,
             },
@@ -260,7 +264,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 shape: { shape: 'Toggle Switch' },
                 style: { fill: 'none' },
                 tooltip: { content: 'Toggle Switch' },
-                constraints: NodeConstraints.Default | NodeConstraints.Tooltip & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
+                constraints: NodeConstraints.Default | NodeConstraints.ReadOnly | NodeConstraints.Tooltip & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
@@ -271,7 +275,8 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: PushButtonOuterRect },
                 style: { strokeColor: 'black', strokeWidth: 0, fill: 'black' },
-                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
+                constraints: NodeConstraints.Default | NodeConstraints.ReadOnly & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
@@ -282,6 +287,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: PushButtonOuterCircle },
                 style: { strokeColor: 'black', strokeWidth: 2, fill: 'white' },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
@@ -293,6 +299,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: PushButtonInnerCircle },
                 style: { strokeColor: 'black', strokeWidth: 2, fill: 'white' },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
@@ -302,7 +309,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 shape: { shape: 'Push Button' },
                 style: { fill: 'transparent' },
                 tooltip: { content: 'Push Button' },
-                constraints: NodeConstraints.Default | NodeConstraints.Tooltip & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
+                constraints: NodeConstraints.Default | NodeConstraints.ReadOnly | NodeConstraints.Tooltip & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
@@ -313,6 +320,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: ClockOuterRectangle },
                 style: { strokeColor: 'black', strokeWidth: 2 },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
@@ -324,15 +332,16 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
                 offsetY: 100,
                 shape: { type: 'Path', data: ClockInnerPart },
                 style: { strokeColor: 'black', strokeWidth: 2, fill: 'white' },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
             {
                 id: 'Clock',
                 children: ['CLKOuterRect', 'CLKInnerPart'],
-                shape: { shape: 'Clock' },
+                shape: { shape: 'Input Clock' },
                 style: { fill: 'none' },
-                tooltip: { content: 'Clock' },
+                tooltip: { content: 'Input Clock' },
                 constraints: NodeConstraints.Default | NodeConstraints.Tooltip & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
@@ -381,7 +390,7 @@ var BulbOuterBluePart = 'M21 1C9.9543 1 1 9.9543 1 21C1 27.5433 4.14221 33.3526 
     
             {
                 id: 'BufferGate', shape: { type: 'Path', data: buffer, shape: 'Buffer' }, style: { fill: '#000000', strokeWidth: 0 },  height: 45, width: 79,
-                tooltip: { content: 'Buffer Gate' },
+                tooltip: { content: 'Buffer' },
                  constraints: NodeConstraints.Default  & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) | NodeConstraints.Tooltip ,
             },
     

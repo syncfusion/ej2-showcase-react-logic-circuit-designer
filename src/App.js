@@ -1,5 +1,5 @@
 import { createElement, closest,formatUnit } from "@syncfusion/ej2-base";
-import { DiagramComponent, SelectorConstraints, Overview, SymbolPaletteComponent, Keys, KeyModifiers, DiagramAction, DiagramTools, NodeConstraints, ConnectorConstraints, DiagramContextMenu, Snapping, DataBinding, PrintAndExport, BpmnDiagrams, HierarchicalTree, MindMap as MindMapTree, ConnectorBridging, LayoutAnimation, SymbolPalette } from "@syncfusion/ej2-react-diagrams";
+import { DiagramComponent, SelectorConstraints, Overview, SymbolPaletteComponent, Keys, KeyModifiers, DiagramAction, DiagramTools, NodeConstraints,AnnotationConstraints, ConnectorConstraints, DiagramContextMenu, Snapping, DataBinding, PrintAndExport, BpmnDiagrams, HierarchicalTree, MindMap as MindMapTree, ConnectorBridging, LayoutAnimation, SymbolPalette } from "@syncfusion/ej2-react-diagrams";
 import { Diagram,SnapConstraints,ControlPointsVisibility ,BezierSmoothness,ConnectorEditing } from "@syncfusion/ej2-react-diagrams";
 import { DropDownButtonComponent } from "@syncfusion/ej2-react-splitbuttons";
 import { DiagramClientSideEvents, OrgChartPropertyBinding } from "./script/events";
@@ -350,6 +350,7 @@ class App extends React.Component {
                 offsetY: 100,
                 shape: { type: 'Path', data: SwitchOffOuterRect },
                 style: { strokeColor: 'black', strokeWidth: 2 },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
             {
@@ -360,7 +361,8 @@ class App extends React.Component {
                 offsetY: 100,
                 shape: { type: 'Path', data: SwitchOffInnerRect },
                 style: { strokeColor: 'black', strokeWidth: 2, },
-                constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
+                constraints: NodeConstraints.Default  & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
             {
                 id: 'SwOff',
@@ -370,7 +372,8 @@ class App extends React.Component {
                 offsetY: 100,
                 shape: { type: 'Path', data: SwitchoffButton },
                 style: { strokeColor: 'black', strokeWidth: 2 },
-                constraints: NodeConstraints.Default & ~NodeConstraints.Select& ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
+                constraints: NodeConstraints.Default  & ~NodeConstraints.Select& ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
             {
                 id: 'SwOn',
@@ -380,6 +383,7 @@ class App extends React.Component {
                 offsetY: 100,
                 shape: { type: 'Path', data: SWitchOnButton },
                 style: { strokeColor: 'black', strokeWidth: 2 },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
                 visible: false,
             },
@@ -401,6 +405,7 @@ class App extends React.Component {
                 offsetY: 100,
                 shape: { type: 'Path', data: PushButtonOuterRect },
                 style: { strokeColor: 'black', strokeWidth: 0, fill: 'black' },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
             {
@@ -411,6 +416,7 @@ class App extends React.Component {
                 offsetY: 100,
                 shape: { type: 'Path', data: PushButtonOuterCircle },
                 style: { strokeColor: 'black', strokeWidth: 2, fill: 'white' },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) ,
             },
             {
@@ -421,6 +427,7 @@ class App extends React.Component {
                 offsetY: 100,
                 shape: { type: 'Path', data: PushButtonInnerCircle },
                 style: { strokeColor: 'black', strokeWidth: 2 },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) ,
             },
             {
@@ -441,6 +448,7 @@ class App extends React.Component {
                 offsetY: 100,
                 shape: { type: 'Path', data: ClockOuterRectangle },
                 style: { strokeColor: 'black', strokeWidth: 2 },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) ,
             },
     
@@ -452,6 +460,7 @@ class App extends React.Component {
                 offsetY: 100,
                 shape: { type: 'Path', data: ClockInnerPart },
                 style: { strokeColor: 'black', strokeWidth: 2, fill: 'white' },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) ,
             },
     
@@ -473,6 +482,7 @@ class App extends React.Component {
                 offsetY: 100,
                 shape: { type: 'Path', data: SwitchOffOuterRect },
                 style: { strokeColor: 'black', strokeWidth: 2 },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) ,
             },
     
@@ -484,6 +494,7 @@ class App extends React.Component {
                 offsetY: 100,
                 shape: { type: 'Path', data: SwitchOffInnerRect },
                 style: { strokeColor: 'black', strokeWidth: 2 },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) ,
             },
     
@@ -495,6 +506,7 @@ class App extends React.Component {
                 offsetY: 100,
                 shape: { type: 'Path', data: SwitchoffButton },
                 style: { strokeColor: 'black', strokeWidth: 2 },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
@@ -506,6 +518,7 @@ class App extends React.Component {
                 offsetY: 100,
                 shape: { type: 'Path', data: SWitchOnButton },
                 style: { strokeColor: 'black', strokeWidth: 2 },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) ,
                 visible: false,
             },
@@ -535,6 +548,7 @@ class App extends React.Component {
                 offsetY: 100,
                 shape: { type: 'Path', data: BulbCompletePath },
                 style: { strokeColor: 'black', fill: 'black' },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect),
             },
     
@@ -546,6 +560,7 @@ class App extends React.Component {
                 offsetY: 110,
                 shape: { type: 'Path', data: BulbBlackPart },
                 style: { strokeColor: 'black', fill: 'black' },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) ,
             },
     
@@ -557,6 +572,7 @@ class App extends React.Component {
                 offsetY: 95,
                 shape: { type: 'Path', data: BulbInnerBluePart },
                 style: { strokeColor: 'black', fill: 'white' },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) ,
                 visible: false,
             },
@@ -569,6 +585,7 @@ class App extends React.Component {
                 offsetY: 87,
                 shape: { type: 'Path', data: BulbOuterBluePart },
                 style: { strokeColor: 'black', fill: 'white' },
+                annotations: [{ constraints: AnnotationConstraints.ReadOnly}],
                 constraints: NodeConstraints.Default & ~NodeConstraints.Select & ~(NodeConstraints.InConnect | NodeConstraints.OutConnect) ,
                 visible: false,
             },
@@ -689,7 +706,7 @@ class App extends React.Component {
             }
         ];
 
-        this.scrollSettings = { canAutoScroll: true, scrollLimit: 'Infinity', minZoom: 0.25, maxZoom: 30 };
+        this.scrollSettings = { canAutoScroll: true, scrollLimit: 'Infinity', minZoom: 0.25, maxZoom: 30, padding: { right: 100, bottom: 100 } };
         this.rulerSettings={ showRulers: true, dynamicGrid: true, horizontalRuler: { interval: 10, segmentWidth: 100, thickness: 25, },
                               verticalRuler: { interval: 10, segmentWidth: 100, thickness: 25 }}
         this.selectedItems={constraints: SelectorConstraints.All & ~SelectorConstraints.ResizeAll & ~SelectorConstraints.Rotate}
@@ -802,8 +819,8 @@ class App extends React.Component {
                                         beforeClose={beforeClose}
                                         beforeItemRender={beforItem}>
 
-                                    </MenuComponent>
-                                <div className="promotion-text"><img style={{marginRight:'7px', filter: 'brightness(0) invert(1)'}} src="./assets/dbstyle/common_images/Syncfusion_Logo.svg" />Powered by&nbsp;<a style={{textDecoration: 'none', color:'#fff30f'}} href="https://www.syncfusion.com/react-components/react-diagram?tag=es-freetools-logic-circuit-diagram-maker-sample-ft" target="_blank">Syncfusion Diagram Component</a></div>                                </div>
+                                        </MenuComponent>
+                                <div className="promotion-text"><img style={{marginRight:'7px', filter: 'brightness(0) invert(1)'}} src="./assets/dbstyle/common_images/Syncfusion_Logo.svg" />Powered by&nbsp;<a style={{textDecoration: 'none', color:'#fff30f'}} href="https://www.syncfusion.com/react-components/react-diagram?tag=es-freetools-logic-circuit-diagram-maker-ft" target="_blank">Syncfusion Diagram Component</a></div>                                </div>
                             </div>
                         </div>
                     </div>
@@ -841,7 +858,7 @@ class App extends React.Component {
                                 pageSettings={this.pageSettings}  nodes={this.nodes} connectors={this.connectors}  backgroundColor="transparent"
                                 selectionChange={this.diagramEvents.selectionChange.bind(this.diagramEvents)}
                                 historyChange={this.diagramEvents.historyChange.bind(this.diagramEvents)} created={this.created.bind(this)} click={this.click.bind(this)} collectionChange={this.collectionChange.bind(this)}
-                                drop={this.drop.bind(this)} scrollChange={this.scrollChange.bind(this)} getConnectorDefaults={this.getConnectorDefaults.bind(this)}
+                                drop={this.drop.bind(this)} textEdit={this.textEdit.bind(this)} doubleClick={this.doubleClick.bind(this)} scrollChange={this.scrollChange.bind(this)} getConnectorDefaults={this.getConnectorDefaults.bind(this)}getNodeDefaults={this.getNodeDefaults.bind(this)}
                                 elementDraw={this.elementDraw.bind(this)}  connectionChange={this.onConnectionChange.bind(this)}  positionChange={this.onPositionChange.bind(this)} 
                                 />
                             </div>
@@ -869,9 +886,17 @@ class App extends React.Component {
         diagram.dataBind();
         this.removeSelectedToolbarItem();
         setTimeout(() => {
-        let connector = document.getElementById('btnDrawConnector');
-        connector.classList.add('tb-item-selected');
-
+            let connector = document.getElementById('btnDrawConnector');
+            connector.classList.add('tb-item-selected');
+            if (diagram.drawingObject.type === 'Straight') {
+                connector.ej2_instances[1].iconCss = "sf-icon-straight_line";
+            }
+            else if (diagram.drawingObject.type === 'Orthogonal') {
+                connector.ej2_instances[1].iconCss = "sf-icon-orthogonal_line";
+            }
+            else {
+                connector.ej2_instances[1].iconCss = "sf-icon-bezier";
+            }
         }, 100);
     }
     renameDiagram() {
@@ -1288,40 +1313,39 @@ class App extends React.Component {
                 zoomCurrentValue.content = (diagram.scrollSettings.currentZoom * 100).toFixed() + '%';
                 break;
             case 'Zoom to Fit':
-                zoom.zoomFactor = 1 / currentZoom - 1;
-                diagram.zoomTo(zoom);
-                zoomCurrentValue.content = diagram.scrollSettings.currentZoom;
+                diagram.fitToPage({ mode: 'Page', region: 'Content'});
+                zoomCurrentValue.content = (diagram.scrollSettings.currentZoom * 100).toFixed() + '%';
                 break;
             case 'Zoom to 50%':
                 if (currentZoom === 0.5) {
                     currentZoom = 0;
-                    zoom.zoomFactor = (0.5 / currentZoom) - 1;
+                    zoom.zoomFactor = (0.5 / currentZoom - 1);
                     diagram.zoomTo(zoom);
                 }
                 else {
-                    zoom.zoomFactor = (0.5 / currentZoom) - 1;
+                    zoom.zoomFactor = (0.5 / currentZoom - 1);
                     diagram.zoomTo(zoom);
                 }
                 break;
             case 'Zoom to 100%':
                 if (currentZoom === 1) {
                     currentZoom = 0;
-                    zoom.zoomFactor = (1 / currentZoom) - 1;
+                    zoom.zoomFactor = (1 / currentZoom - 1);
                     diagram.zoomTo(zoom);
                 }
                 else {
-                    zoom.zoomFactor = (1 / currentZoom) - 1;
+                    zoom.zoomFactor = (1 / currentZoom - 1);
                     diagram.zoomTo(zoom);
                 }
                 break;
             case 'Zoom to 200%':
                 if (currentZoom === 2) {
                     currentZoom = 0;
-                    zoom.zoomFactor = (2 / currentZoom) - 1;
+                    zoom.zoomFactor = (2 / currentZoom - 1);
                     diagram.zoomTo(zoom);
                 }
                 else {
-                    zoom.zoomFactor = (2 / currentZoom) - 1;
+                    zoom.zoomFactor = (2 / currentZoom - 1);
                     diagram.zoomTo(zoom);
                 }
                 break;
@@ -2507,9 +2531,12 @@ class App extends React.Component {
                 }
             });
         } 
-    };  
-    getConnectorDefaults(connector) {
-        if (!this.isConToolActive) {
+    };
+    getNodeDefaults(node) {
+        node.tooltip.position = 'BottomCenter';
+    };
+    getConnectorDefaults(connector,diagram) {
+        if (!this.isConToolActive && !diagram.isLoading) {
             connector.type = 'Bezier';
         }
         connector.hitPadding = 20;
@@ -2532,6 +2559,40 @@ class App extends React.Component {
         }
         if (!args.element) {
             args.cancel = true;
+        }
+    }
+    doubleClick(args) {
+        var diagram = this.selectedItem.selectedDiagram;
+        if (args.source.parentId) {
+            let parentid = args.source.parentId;
+            let parentNode = this.diagram.nameTable[parentid];
+            diagram.startTextEdit(parentNode)
+        }
+    }
+    textEdit(args) {
+        var diagram = this.selectedItem.selectedDiagram;
+        if (args.element.annotations && args.element.annotations.length > 0) {
+            if ((args.element.id.indexOf("Switch") != -1) || (args.element.id.indexOf("SwOffOuter") != -1)) {
+                args.element.annotations[0].offset.x = 0.3;
+                args.element.annotations[0].offset.y = 1.2;
+            }
+            else if ((args.element.id.indexOf("PushButton1") != -1) || (args.element.id.indexOf("PBOuterRect") != -1)) {
+                args.element.annotations[0].offset.x = 0.3;
+                args.element.annotations[0].offset.y = 1.2;
+            }
+            else if ((args.element.id.indexOf("Bulb") != -1)) {
+                args.element.annotations[0].offset.x = 0.5;
+                args.element.annotations[0].offset.y = 1.2;
+            }
+            else if ((args.element.id.indexOf("Clock") != -1) || (args.element.id.indexOf("HighConstant") != -1) || (args.element.id.indexOf("LowConstant") != -1)) {
+                args.element.annotations[0].offset.x = 0.4;
+                args.element.annotations[0].offset.y = 1.25;
+            }
+            else {
+                args.element.annotations[0].offset.x = 0.5;
+                args.element.annotations[0].offset.y = 1.2;
+            }
+            diagram.dataBind();
         }
     }
     drop(args) {
@@ -3078,13 +3139,13 @@ const Footer = () => (
           <button
             type="button"
             className="e-trial-btn e-btn e-primary e-icons"
-            onClick={() => window.open('https://www.syncfusion.com/downloads/react?tag=es-freetools-logic-circuit-diagram-maker-sample-ads-trial', '_blank')}
+            onClick={() => window.open('https://www.syncfusion.com/downloads/react?tag=es-freetools-logic-circuit-diagram-maker-ads-trial', '_blank')}
           >
           </button>
           <button
             type="button"
             className="e-demo-btn e-btn"
-            onClick={() => window.open('https://www.syncfusion.com/request-demo?tag=es-freetools-logic-circuit-diagram-maker-sample-ads-demo', '_blank')}
+            onClick={() => window.open('https://www.syncfusion.com/request-demo?tag=es-freetools-logic-circuit-diagram-maker-ads-demo', '_blank')}
           >
             Request Demo
           </button>
